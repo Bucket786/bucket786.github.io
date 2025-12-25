@@ -1,145 +1,90 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>keep scrolling</title>
+  <title>Chitransh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(180deg, #0b0b0b, #111, #000);
+      height: 100vh;
+      background: url("bg.jpg") no-repeat center center fixed;
+      background-size: cover;
       color: #eaeaea;
-      line-height: 1.8;
     }
 
-    .section {
-      height: 100vh;
+    /* Dark overlay for comfort */
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.55);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       padding: 20px;
-      font-size: 28px;
-
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .content {
+      max-width: 600px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 40px;
+      border-radius: 16px;
+      backdrop-filter: blur(4px);
     }
 
-    .hint {
-      font-size: 22px;
-      color: #bbb;
+    h1 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      font-weight: 600;
     }
 
-    .final {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ff5c5c;
-      flex-direction: column;
+    .hello {
+      font-size: 20px;
+      color: #cfcfcf;
+      margin-bottom: 25px;
     }
 
-    button {
-      margin-top: 40px;
-      padding: 14px 32px;
+    p {
       font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      background: #ffffff;
-      color: #000;
-      transition: transform 0.2s ease;
+      line-height: 1.7;
+      color: #d6d6d6;
     }
 
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .status {
+    footer {
       margin-top: 30px;
-      font-size: 22px;
-      color: #ccc;
-      min-height: 1.5em;
+      font-size: 14px;
+      color: #aaaaaa;
     }
   </style>
 </head>
+
 <body>
+  <div class="overlay">
+    <div class="content">
+      <h1>Chitransh</h1>
 
-  <div class="section">
-    You didn’t need to click this.
+      <div class="hello">
+        Hi 👋
+      </div>
+
+      <p>
+        I’m just a simple student who likes to play with technology.
+        I enjoy learning how things work, breaking them sometimes,
+        and fixing them again.
+      </p>
+
+      <footer>
+        Still learning. Still curious.
+      </footer>
+    </div>
   </div>
-
-  <div class="section hint">
-    Still scrolling?<br>Bold decision.
-  </div>
-
-  <div class="section hint">
-    There’s something waiting at the bottom.
-  </div>
-
-  <div class="section hint">
-    You’ve already wasted time.<br>Commit fully.
-  </div>
-
-  <div class="section hint">
-    Almost there.<br>No turning back now.
-  </div>
-
-  <div class="section final">
-    <div id="finalMessage"></div>
-
-    <button onclick="fakeReward()">Claim Reward</button>
-    <div class="status" id="status"></div>
-  </div>
-
-<script>
-  // Scroll animation
-  const sections = document.querySelectorAll('.section');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  sections.forEach(section => observer.observe(section));
-
-  // Device-based final message
-  const finalMessage = document.getElementById("finalMessage");
-  const width = window.innerWidth;
-
-  if (width <= 600) {
-    finalMessage.textContent =
-      "You scrolled all this way on your phone. Absolutely unhinged behavior 😜";
-  } else if (width <= 1024) {
-    finalMessage.textContent =
-      "Tablet user detected. Still scrolled to the bottom though. Disappointing 😜";
-  } else {
-    finalMessage.textContent =
-      "Big screen, full attention, still scrolled to the end. You’re a disgrace 😜";
-  }
-
-  // Fake reward logic
-  function fakeReward() {
-    const status = document.getElementById('status');
-    status.textContent = "Processing your reward...";
-
-    setTimeout(() => {
-      status.textContent = "Still working on it...";
-    }, 5000);
-
- setTimeout(() => {
-  status.textContent =
-    "Ummm… reward? Yeah, your reward is : \"Progress takes persistence.\" Sadly, this scroll didn’t.";
-}, 12000);
-  }
-</script>
-
 </body>
 </html>
